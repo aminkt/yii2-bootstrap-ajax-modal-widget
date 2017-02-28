@@ -81,31 +81,42 @@ class AjaxModal extends Widget
     private function renderJavaCodes(){
         $containerId = $this->ajaxContainerId;
         $js = <<<JS
-    $(".modal").on("show.bs.modal", function(e) {
-        var link = $(e.relatedTarget);
-        var modal = $(this);
-        var ajaxDisable = modal.data('ajax-disable')?true:false;
-        // console.log('data-ajax-disable:'+ajaxDisable);
-        if(!ajaxDisable){
-            modal.show();
-            modal.find(".loading").removeClass("hidden");
-            $(link.data('#$containerId')).empty();
-            var url = link.data('url');
-            $.get(url, {
-                'id':link.data('id')
-            }, function(data, status){
-                if(status == "success"){
-                    modal.find(".loading").addClass("hidden");   
-                    modal.find('#$containerId').html(data);
-                }                    
-                if(status == "error"){
-                    console.error("Error: "+ xhr.status + ": "+ xhr.statusText);
-                    modal.find(".loading").addClass("hidden");
-                    modal.find('#$containerId').text('خطا در بارگزاری اطلاعات!');
-                }
-            });
-        }
-    });
+        
+function response(data, status, modal) {
+    if(status == "success"){
+        modal.find(".loading").addClass("hidden");   
+        modal.find('#$containerId').html(data);
+    }                    
+    if(status == "error"){
+        console.error("Error: "+ xhr.status + ": "+ xhr.statusText);
+        modal.find(".loading").addClass("hidden");
+        modal.find('#$containerId').text('خطا در بارگزاری اطلاعات!');
+    }
+}
+$(".modal").on("show.bs.modal", function(e) {
+var link = $(e.relatedTarget);
+var modal = $(this);
+var ajaxDisable = modal.data('ajax-disable')?true:false;
+// console.log('data-ajax-disable:'+ajaxDisable);
+if(!ajaxDisable){
+    modal.show();
+    modal.find(".loading").removeClass("hidden");
+    $(link.data('#$containerId')).empty();
+    var url = link.data('url');
+    var get = link.data('get');
+    var post = link.data('post');
+    if(get){
+        $.get(url, get , function(data, status){
+            response(data, status, modal);
+        });
+    }else if(post){
+        $.post(url, post , function(data, status){
+            response(data, status, modal);
+        });
+    }
+    
+}
+});
     
     // $('.modal').on('hide.bs.modal', function (e) {
     //     var modal = $(this);
