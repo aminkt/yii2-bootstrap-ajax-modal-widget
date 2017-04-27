@@ -54,11 +54,7 @@ class AjaxModal extends Widget
      * Render Modal header
      */
     private function renderModalHeader(){
-        Modal::begin([
-            'header'=>'<h4>نمایش اطلاعات ربات</h4>',
-            'id'=>'bot-details',
-            'size'=>'modal-lg',
-        ]);
+        Modal::begin($this->modalOptions);
         echo Html::beginTag('div', ['class'=>'loading hidden']).PHP_EOL;
         echo Html::tag('img', '', ['src'=>$this->assetBundle->baseUrl."/loading-spinner-grey.gif"]).PHP_EOL;
         echo Html::tag('div', $this->loadingMessage, ['class'=>'loading-message']).PHP_EOL;
