@@ -1,5 +1,5 @@
 <?php
-namespace aminkt\bootstrap\ajaxModal;
+namespace aminkt\widgets\ajaxBootstrapModal;
 
 
 use yii\web\View;
