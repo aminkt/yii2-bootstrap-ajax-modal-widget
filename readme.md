@@ -1,14 +1,35 @@
 How to install this module:
 
-Step1: First clone `ajaxModal` in your module folder
+Step1: Add flowing line to require part of `composer.json` :
 ```
-cd widget_folder
-git clone git@gitlab.com:aminkt/yii2-bootstrap-ajax-modal-widget.git ajaxModal
-```
-
-Step2: Add flowing code into your `bootstrap.php` file in your project.
-```
-Yii::setAlias('ajaxModal', 'PATH_TO_MODULE_DIRECTORY/ajaxModal');
+"aminkt/yii2-bootstrap-ajax-modal-widget": "*",
 ```
 
-Step3: Use it as yii2 widget and enjoy it :)
+And after that run bellow command in your composer :
+```
+Composer update aminkt/yii2-bootstrap-ajax-modal-widget
+```
+
+Step2: Add flowing lines in your application admin config in module part:
+
+```
+'userAccounting' => [
+    'class' => \aminkt\userAccounting\UserAccounting::className(),
+    'controllerNamespace' => \aminkt\userAccounting\UserAccounting::ADMIN_CONTROLLER_NAMESPACE,
+    'transactionModel' => '\your\transaction-model\class',
+    'userModel' => '\your\user-model\User',
+],
+```
+
+Step3: Add flowing lines in your application view file:
+
+```
+echo \aminkt\bootstrap\ajaxModal\AjaxModal::widget([
+    'id'=>'bot-details-content',
+    'modalOptions'=>[
+        'header'=>'<h4>نمایش اطلاعات ربات</h4>',
+        'id'=>'bot-details',
+        'size'=>'modal-lg',
+    ]
+]);
+```
