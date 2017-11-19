@@ -1,0 +1,30 @@
+{
+    "name": "aminkt/yii2-bootstrap-ajax-modal-widget",
+    "description": "Bootstrap ajax modak widger",
+    "keywords": ["yii", "botstrap", "ajax", "widget", "modal"],
+    "type": "yii2-extension",
+    "support": {
+    	"source": "https://gitlab.com/aminkt/yii2-bootstrap-ajax-modal-widge"
+    },
+    "authors": [
+    	{
+    		"name": "Amin Keshavarz",
+    		"email": "ak_1596@yahoo.com"
+    	}
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.11"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"aminkt\\bootstrap\\ajaxModal\\": ""
+    	}
+    },
+    "extra": {
+        "branch-alias": {
+          "dev-master": "master"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
