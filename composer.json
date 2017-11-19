@@ -20,11 +20,6 @@
     		"aminkt\\widgets\\ajaxBootstrapModal\\": ""
     	}
     },
-    "extra": {
-        "branch-alias": {
-          "dev-master": "dev"
-        }
-    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
