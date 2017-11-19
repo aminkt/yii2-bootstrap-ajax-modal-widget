@@ -17,7 +17,7 @@
     },
     "autoload": {
     	"psr-4": {
-    		"aminkt\\bootstrap\\ajaxModal\\": ""
+    		"aminkt\\widgets\\ajaxBootstrapModal\\": ""
     	}
     },
     "extra": {
